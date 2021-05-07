@@ -4,15 +4,15 @@ var mouseImg, mousest, mouset, catImg, catst, catt, bg;
 
 function preload() {
     //load the images here
-    mouseImg=loadAnimation("mouse2.png, mouse3.png");
-    mousest=loadImage("mouse1.png");
-    mouset=loadImage("mouse4.png");
+    mouseImg=loadAnimation("images/mouse2.png" ,  "images/mouse3.png");
+    mousest=loadImage("images/mouse1.png");
+    mouset=loadImage("images/mouse4.png");
 
-    catImg=loadAnimation("cat2.png, cat3.png");
-    catst=loadImage("cat1.png");
-    catt=loadImage("cat4.png");
+    catImg=loadAnimation("images/cat2.png", "images/cat3.png");
+    catst=loadImage("images/cat1.png");
+    catt=loadImage("images/cat4.png");
 
-    bg=loadImage("garden.png");
+    bg=loadImage("images/garden.png");
 }
 
 function setup(){
@@ -20,10 +20,13 @@ function setup(){
     //create tom and jerry sprites here
     cat=createSprite(850, 700);
     cat.addImage(catst);
+    cat.scale=0.2;
+    cat.setCollider("circle", 20, 0, 500)
 
     mouse=createSprite(150, 700);
     mouse.addImage(mousest);
-
+    mouse.scale=0.1;
+    //cat.debug=true;
 }
 
 function draw() {
@@ -48,7 +51,7 @@ function keyPressed(){
   if(keyDown("left")){
   mouse.addAnimation(mouseImg);
   cat.addAnimation(catImg);
-  cat.velocityX=3;
+  cat.x=cat.x-3;
   }
 
 }
